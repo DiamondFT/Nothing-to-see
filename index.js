@@ -27,7 +27,6 @@ var fortunes = [
 	"Yes",
 	"No",
 	"Maybe",
-	"Fuck u",
 ];
 var bot = new Discord.Client();
 
@@ -39,10 +38,6 @@ bot.on("ready", function() {
 	bot.user.setStatus('playing');
 	bot.user.setGame('>help | ExoBear');
 })
-
-bot.on("guildMemberAdd", function(member) {
-	member.guild.channels.find("name", "general").sendMessage(member.toString() + " welcome dear friend");
-	});
 
 bot.on("message", function (message) {
     if (message.author.equals(bot.user)) return;
@@ -56,23 +51,20 @@ bot.on("message", function (message) {
 			message.channel.sendMessage("🏓");
 			break;
 		case "info":
-			message.channel.sendMessage("I'm a super dope bot created by AltsEnabled, and Joey#6550");
+			message.channel.sendMessage("I'm a super dope bot created by diamondFTW#6550");
 			break;
 			case "8ball":
 			if (args[1]) message.channel.sendMessage(fortunes[Math.floor(Math.random() * fortunes.length)]);  
 				else message.channel.sendMessage("Can't read that");
 				break;
-				case "noticeme":
-					 message.channel.sendMessage(message.author.toString() + " Kid");
-					 break;
 					 case "help":
             var help = new Discord.RichEmbed()
-                .setAuthor("ExoBear Bot", "https://s26.postimg.org/co3xxt10p/Avatar.png")
+                .setAuthor("ExoBear Bot")
                 .addField("Help", ">help - Shows This Text")
                 .addField("Music", ">music - shows the music help")
                 .addField("Support", ">support - Link to support discord")
                 .addField("Info", ">info - Bot info")
-                .addField("Creator", ">creator - The creator's website")
+                .addField("Creator", ">creator - The creator's website", "**(WIP)**")
                 .addField("Fun Stuff", ">fun - Shows the fun things")
                 .setThumbnail(message.author.avatarURL)
                 .setColor(0xff0000)
@@ -119,10 +111,6 @@ bot.on("message", function (message) {
 
         if (server.dispacher) server.dispacher.end();
     break;
-    case "dab":
-    		let [args1] = args[0];
-    		bot.user.setGame(`${args[1]}`);
-    break;
     case "stop":
          var server = servers[message.guild.id];
 
@@ -132,7 +120,6 @@ bot.on("message", function (message) {
 			var fun = new Discord.RichEmbed()
 		.addField("fun", ">8ball <message>")
 		.addField("fun", ">ping ")
-		.addField("fun", ">noticeme ")
 		.setThumbnail(message.author.avatarURL)
 		.setColor(0xff0000)
 		message.channel.sendEmbed(fun)
